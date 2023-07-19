@@ -5,8 +5,8 @@ from game.utils.constants import ENEMY_2
 
 
 class ShipSmall(Enemy):
-    WIDTH = 20
-    HEIGHT = 30
+    WIDTH = 30
+    HEIGHT = 40
     SPEED_X = 10
     SPEED_Y = 4
 

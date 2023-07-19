@@ -22,7 +22,6 @@ class Spaceship:
         self.is_alive = True
 
     def update(self, game_speed, user_input, handle_bullet):
-        self.shoot(user_input, handle_bullet)
         if user_input[pygame.K_LEFT]:
             self.move_left(game_speed)
 
@@ -34,6 +33,9 @@ class Spaceship:
 
         if user_input[pygame.K_DOWN]:
             self.move_down(game_speed)
+
+        if user_input[pygame.K_SPACE]:
+            self.shoot(handle_bullet)
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
@@ -56,6 +58,5 @@ class Spaceship:
         if self.rect.bottom < SCREEN_HEIGHT:
             self.rect.y += game_speed
 
-    def shoot(self, user_input, handle_bullet):
-        if user_input[pygame.K_SPACE]:
-            handle_bullet.add_bullet(BULLET_PLAYER_TYPE, self.rect.center)
+    def shoot(self, handle_bullet):
+        handle_bullet.add_bullet(BULLET_PLAYER_TYPE, self.rect.center)

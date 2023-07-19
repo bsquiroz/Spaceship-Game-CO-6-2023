@@ -4,18 +4,7 @@ from game.components.enemies.ship_small import ShipSmall
 
 class EnemyHandler:
     def __init__(self):
-        self.enemies = [
-            Ship(),
-            Ship(),
-            ShipSmall(),
-            ShipSmall(),
-            ShipSmall(),
-            ShipSmall(),
-            ShipSmall(),
-            ShipSmall(),
-            ShipSmall(),
-            ShipSmall(),
-        ]
+        self.enemies = []
 
     def update(self, bullet_handler):
         self.add_enemy()
@@ -30,8 +19,9 @@ class EnemyHandler:
             enemy.draw(screen)
 
     def add_enemy(self):
-        if len(self.enemies) < 10:
+        if len(self.enemies) < 5:
             self.enemies.append(Ship())
+            self.enemies.append(ShipSmall())
 
     def remove_enemy(self, enemy):
         self.enemies.remove(enemy)
