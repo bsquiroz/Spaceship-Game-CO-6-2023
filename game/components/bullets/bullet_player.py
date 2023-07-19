@@ -4,7 +4,7 @@ from game.utils.constants import BULLET
 
 
 class BulletPlayer(Bullet):
-    WIDTH = 9
+    WIDTH = 16
     HEIGHT = 32
     SPEED = 20
 

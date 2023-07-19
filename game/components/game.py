@@ -68,7 +68,7 @@ class Game:
             self.light_years += 1
 
             if not self.player.is_alive:
-                pygame.time.delay(300)
+                pygame.time.delay(500)
                 self.playing = False
                 self.number_deaths += 1
 
