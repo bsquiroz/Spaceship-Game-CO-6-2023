@@ -1,3 +1,5 @@
+import random
+
 from game.components.enemies.ship import Ship
 from game.components.enemies.ship_small import ShipSmall
 
@@ -24,8 +26,7 @@ class EnemyHandler:
 
     def add_enemy(self):
         if len(self.enemies) < 5:
-            self.enemies.append(Ship())
-            self.enemies.append(ShipSmall())
+            self.enemies.append(random.choice([Ship(), ShipSmall()]))
 
     def remove_enemy(self, enemy):
         self.enemies.remove(enemy)
