@@ -117,22 +117,29 @@ class Game:
                 COLORS["WHITE"],
                 height=SCREEN_HEIGHT // 2 + 50,
             )
+            light_years, light_years_rect = text_utils.get_message(
+                f"Your distance is: {self.light_years} light years",
+                30,
+                COLORS["WHITE"],
+                height=SCREEN_HEIGHT // 2 + 80,
+            )
             score_record, score_record_rect = text_utils.get_message(
                 f"Your record score is: {self.score_record}",
                 20,
-                COLORS["RED"],
-                height=SCREEN_HEIGHT // 2 + 100,
+                COLORS["YELLOW"],
+                height=SCREEN_HEIGHT // 2 + 110,
             )
             light_years_record, light_years_record_rect = text_utils.get_message(
                 f"Your record light years is: {self.light_years_record}",
                 20,
-                COLORS["RED"],
-                height=SCREEN_HEIGHT // 2 + 125,
+                COLORS["YELLOW"],
+                height=SCREEN_HEIGHT // 2 + 140,
             )
 
             self.screen.blit(text, text_rect)
             self.screen.blit(score, score_rect)
             self.screen.blit(score_record, score_record_rect)
+            self.screen.blit(light_years, light_years_rect)
             self.screen.blit(light_years_record, light_years_record_rect)
 
     def draw_score(self):
