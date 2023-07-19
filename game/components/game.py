@@ -35,6 +35,9 @@ class Game:
         self.bullet_handler = BulletHandler()
         self.score = 0
         self.number_deaths = 0
+        self.score_record = 0
+        self.light_years = 0
+        self.light_years_record = 0
 
     def run(self):
         # Game loop: events - update - draw
@@ -62,10 +65,14 @@ class Game:
             self.score = self.enemy_handler.enemies_destroyed
             self.asteroid.update()
 
+            self.light_years += 1
+
             if not self.player.is_alive:
                 pygame.time.delay(300)
                 self.playing = False
                 self.number_deaths += 1
+
+                self.history_game()
 
     def draw(self):
         self.draw_background()
@@ -76,6 +83,7 @@ class Game:
             self.enemy_handler.draw(self.screen)
             self.bullet_handler.draw(self.screen)
             self.draw_score()
+            self.draw_light_years()
             self.asteroid.draw(self.screen)
         else:
             self.draw_menu()
@@ -109,8 +117,23 @@ class Game:
                 COLORS["WHITE"],
                 height=SCREEN_HEIGHT // 2 + 50,
             )
+            score_record, score_record_rect = text_utils.get_message(
+                f"Your record score is: {self.score_record}",
+                20,
+                COLORS["RED"],
+                height=SCREEN_HEIGHT // 2 + 100,
+            )
+            light_years_record, light_years_record_rect = text_utils.get_message(
+                f"Your record light years is: {self.light_years_record}",
+                20,
+                COLORS["RED"],
+                height=SCREEN_HEIGHT // 2 + 125,
+            )
+
             self.screen.blit(text, text_rect)
             self.screen.blit(score, score_rect)
+            self.screen.blit(score_record, score_record_rect)
+            self.screen.blit(light_years_record, light_years_record_rect)
 
     def draw_score(self):
         score, score_rect = text_utils.get_message(
@@ -118,9 +141,23 @@ class Game:
         )
         self.screen.blit(score, score_rect)
 
+    def draw_light_years(self):
+        light_years, light_years_rect = text_utils.get_message(
+            f"Distance {self.light_years}", 15, COLORS["WHITE"], 1010, 80
+        )
+        self.screen.blit(light_years, light_years_rect)
+
+    def history_game(self):
+        if self.score > self.score_record:
+            self.score_record = self.score
+
+        if self.light_years > self.light_years_record:
+            self.light_years_record = self.light_years
+
     def reset(self):
         self.player.reset()
         self.enemy_handler.reset()
         self.bullet_handler.reset()
         self.score = 0
+        self.light_years = 0
         self.playing = True
