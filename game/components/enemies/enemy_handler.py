@@ -11,7 +11,7 @@ class EnemyHandler:
         for enemy in self.enemies:
             enemy.update(bullet_handler)
 
-            if not enemy.is_visible:
+            if not enemy.is_visible or not enemy.is_alive:
                 self.remove_enemy(enemy)
 
     def draw(self, screen):
