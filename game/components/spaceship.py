@@ -60,3 +60,11 @@ class Spaceship:
 
     def shoot(self, handle_bullet):
         handle_bullet.add_bullet(BULLET_PLAYER_TYPE, self.rect.center)
+
+    def reset(self):
+        self.image = SPACESHIP
+        self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGHT))
+        self.rect = self.image.get_rect()
+        self.rect.x = self.X_POS
+        self.rect.y = self.Y_POS
+        self.is_alive = True

@@ -38,3 +38,5 @@ RIGHT = "right"
 
 BULLET_ENEMY_TYPE = "enemy"
 BULLET_PLAYER_TYPE = "player"
+
+COLORS = {"WHITE": (255, 255, 255)}
