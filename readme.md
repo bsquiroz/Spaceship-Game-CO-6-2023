@@ -132,4 +132,4 @@ El juego consta de enemigos, obstaculos y poderes
 | <img src="./game/assets/Bullet/missile.png" alt="imagen 2" width="50" height="50">  | Aleatorio              | Te otorga un misil que hace 10 de daño |
 | <img src="./game/assets/Other/shield.png" alt="imagen 3" width="50" height="50">    | Aleatorio              | Te da inmunidad por 5 segundos         |
 
-## Y por ultimo no jueguen mucho, mejor estudiente y tomen mucha agua, llegaran lejos, a menos de que transmitan por twitch sus juegos y la gente los apoye y se hagan ricos, pero no es probable, asi que estudien y mucha actividad fisica para que puedan jugar con sus nietos, BYE
+## Y por ultimo no jueguen mucho, mejor estudiente y tomen mucha agua, llegaran lejos, a menos de que transmitan por twitch sus juegos y la gente los apoye y se hagan ricos, pero no es probable, asi que estudien y mucha actividad fisica para que puedan jugar con sus nietos.
