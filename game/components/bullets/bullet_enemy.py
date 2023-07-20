@@ -18,4 +18,6 @@ class BulletEnemy(Bullet):
             self.is_alive = False
             self.is_visible = False
         self.rect.y += self.SPEED
-        super().update(player)
+
+        if not player.has_shield:
+            super().update(player)

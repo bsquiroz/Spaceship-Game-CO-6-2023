@@ -14,6 +14,7 @@ from game.components.spaceship import Spaceship
 from game.components.enemies.enemy_handler import EnemyHandler
 from game.components.asteroid import Asteorid
 from game.components.bullets.bullet_handler import BulletHandler
+from game.components.power_ups.power_up_handler import PowerUpHandler
 from game.utils import text_utils
 
 
@@ -33,6 +34,7 @@ class Game:
         self.enemy_handler = EnemyHandler()
         self.asteroid = Asteorid()
         self.bullet_handler = BulletHandler()
+        self.power_up_handler = PowerUpHandler()
         self.score = 0
         self.number_deaths = 0
         self.score_record = 0
@@ -62,6 +64,7 @@ class Game:
             self.player.update(self.game_speed, user_input, self.bullet_handler)
             self.enemy_handler.update(self.bullet_handler)
             self.bullet_handler.update(self.player, self.enemy_handler.enemies)
+            self.power_up_handler.update(self.player)
             self.score = self.enemy_handler.enemies_destroyed
             self.asteroid.update()
 
@@ -82,6 +85,7 @@ class Game:
             self.player.draw(self.screen)
             self.enemy_handler.draw(self.screen)
             self.bullet_handler.draw(self.screen)
+            self.power_up_handler.draw(self.screen)
             self.draw_score()
             self.draw_light_years()
             self.asteroid.draw(self.screen)
@@ -165,6 +169,7 @@ class Game:
         self.player.reset()
         self.enemy_handler.reset()
         self.bullet_handler.reset()
+        self.power_up_handler.reset()
         self.score = 0
         self.light_years = 0
         self.playing = True
