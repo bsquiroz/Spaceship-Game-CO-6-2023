@@ -14,9 +14,9 @@ from game.utils.constants import (
 
 from game.components.spaceship import Spaceship
 from game.components.enemies.enemy_handler import EnemyHandler
-from game.components.asteroid import Asteorid
 from game.components.bullets.bullet_handler import BulletHandler
 from game.components.power_ups.power_up_handler import PowerUpHandler
+from game.components.obstacles.obstacles_handler import ObstaclesHandler
 from game.utils import text_utils
 
 
@@ -34,9 +34,9 @@ class Game:
         self.y_pos_bg = 0
         self.player = Spaceship()
         self.enemy_handler = EnemyHandler()
-        self.asteroid = Asteorid()
         self.bullet_handler = BulletHandler()
         self.power_up_handler = PowerUpHandler()
+        self.obstacle_handler = ObstaclesHandler()
         self.score = 0
         self.number_deaths = 0
         self.score_record = 0
@@ -64,12 +64,13 @@ class Game:
         if self.playing:
             user_input = pygame.key.get_pressed()
             self.player.update(self.game_speed, user_input, self.bullet_handler)
+
             self.enemy_handler.update(self.bullet_handler)
             self.bullet_handler.update(self.player, self.enemy_handler.enemies)
             self.power_up_handler.update(self.player)
-            self.score = self.enemy_handler.enemies_destroyed
-            self.asteroid.update()
+            self.obstacle_handler.update(self.player)
 
+            self.score = self.enemy_handler.enemies_destroyed
             self.light_years += 1
 
             if not self.player.is_alive:
@@ -88,11 +89,11 @@ class Game:
             self.enemy_handler.draw(self.screen)
             self.bullet_handler.draw(self.screen)
             self.power_up_handler.draw(self.screen)
+            self.obstacle_handler.draw(self.screen)
             self.draw_score()
             self.draw_light_years()
             self.draw_lifes()
             self.draw_missiles()
-            self.asteroid.draw(self.screen)
         else:
             self.draw_menu()
 

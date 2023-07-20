@@ -33,7 +33,9 @@ ENEMY_1 = pygame.image.load(os.path.join(IMG_DIR, "Enemy/enemy_1.png"))
 ENEMY_2 = pygame.image.load(os.path.join(IMG_DIR, "Enemy/enemy_2.png"))
 ENEMY_BOSS = pygame.image.load(os.path.join(IMG_DIR, "Enemy/boss.png"))
 
-ENEMY_ASTEROID = pygame.image.load(os.path.join(IMG_DIR, "Obstacles/meteoro.png"))
+ENEMY_ASTEROID = pygame.image.load(os.path.join(IMG_DIR, "Obstacles/asteroid.png"))
+ENEMY_TRASH = pygame.image.load(os.path.join(IMG_DIR, "Obstacles/trash.png"))
+ENEMY_COMET = pygame.image.load(os.path.join(IMG_DIR, "Obstacles/comet.png"))
 
 FONT_STYLE = "freesansbold.ttf"
 
