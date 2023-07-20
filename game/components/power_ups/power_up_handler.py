@@ -2,6 +2,7 @@ import random
 
 from game.components.power_ups.shield import Shield
 from game.components.power_ups.heart import Heart
+from game.components.power_ups.missile import Missile
 
 
 class PowerUpHandler:
@@ -31,7 +32,7 @@ class PowerUpHandler:
             power_up.draw(screen)
 
     def add_power_app(self):
-        self.power_ups.append(random.choice([Shield(), Heart()]))
+        self.power_ups.append(random.choice([Shield(), Heart(), Missile()]))
 
     def remove_power_app(self, power_app):
         self.power_ups.remove(power_app)

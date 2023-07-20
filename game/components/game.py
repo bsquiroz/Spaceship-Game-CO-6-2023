@@ -9,6 +9,7 @@ from game.utils.constants import (
     FPS,
     COLORS,
     HEART_RED,
+    BULLET_POWER_UP,
 )
 
 from game.components.spaceship import Spaceship
@@ -90,6 +91,7 @@ class Game:
             self.draw_score()
             self.draw_light_years()
             self.draw_lifes()
+            self.draw_missiles()
             self.asteroid.draw(self.screen)
         else:
             self.draw_menu()
@@ -169,6 +171,18 @@ class Game:
         self.screen.blit(self.image, self.rect)
         info_lifes, info_lives_rect = text_utils.get_message(
             f"x {self.player.lives}", 15, COLORS["WHITE"], 50, 20
+        )
+        self.screen.blit(info_lifes, info_lives_rect)
+
+    def draw_missiles(self):
+        self.image = BULLET_POWER_UP
+        self.image = pygame.transform.scale(self.image, (20, 20))
+        self.rect = self.image.get_rect()
+        self.rect.x = 10
+        self.rect.y = 40
+        self.screen.blit(self.image, self.rect)
+        info_lifes, info_lives_rect = text_utils.get_message(
+            f"x {self.player.missiles}", 15, COLORS["WHITE"], 50, 50
         )
         self.screen.blit(info_lifes, info_lives_rect)
 
