@@ -18,4 +18,4 @@ class BulletPowerUp(Bullet):
             self.is_visible = False
 
         self.rect.y -= self.SPEED
-        super().update(enemy)
+        super().update(enemy, True)

@@ -6,9 +6,13 @@ class Bullet:
         self.is_visible = True
         self.is_alive = True
 
-    def update(self, obj):
+    def update(self, obj, powerApp):
         if self.rect.colliderect(obj.rect):
-            obj.lives -= 1
+            if powerApp:
+                obj.lives -= 10
+            else:
+                obj.lives -= 1
+
             self.is_alive = False
 
             if obj.lives <= 0:

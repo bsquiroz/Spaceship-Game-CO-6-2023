@@ -6,12 +6,15 @@ from game.components.enemies.boss import Boss
 
 
 class EnemyHandler:
+    SHOW_BOSS = 10
+
     def __init__(self):
         self.enemies = []
         self.enemies_destroyed = 0
 
-    def update(self, bullet_handler, number_deaths):
-        self.add_enemy(number_deaths)
+    def update(self, bullet_handler):
+        self.add_enemy()
+
         for enemy in self.enemies:
             enemy.update(bullet_handler)
 
@@ -25,9 +28,15 @@ class EnemyHandler:
         for enemy in self.enemies:
             enemy.draw(screen)
 
-    def add_enemy(self, number_deaths):
+    def add_enemy(self):
         if len(self.enemies) < 5:
-            self.enemies.append(random.choice([Ship(), ShipSmall(), Boss()]))
+            if (
+                self.enemies_destroyed != 0
+                and self.enemies_destroyed % self.SHOW_BOSS == 0
+            ):
+                self.enemies.append(Boss())
+
+            self.enemies.append(random.choice([Ship(), ShipSmall()]))
 
     def remove_enemy(self, enemy):
         self.enemies.remove(enemy)

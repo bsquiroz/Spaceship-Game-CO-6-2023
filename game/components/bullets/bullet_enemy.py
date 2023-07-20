@@ -20,4 +20,4 @@ class BulletEnemy(Bullet):
         self.rect.y += self.SPEED
 
         if not player.has_shield:
-            super().update(player)
+            super().update(player, False)
