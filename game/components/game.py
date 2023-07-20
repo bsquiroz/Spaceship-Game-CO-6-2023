@@ -168,7 +168,7 @@ class Game:
         self.rect.y = 10
         self.screen.blit(self.image, self.rect)
         info_lifes, info_lives_rect = text_utils.get_message(
-            f"x {self.player.lives / 5}", 15, COLORS["WHITE"], 50, 20
+            f"x {self.player.lives}", 15, COLORS["WHITE"], 50, 20
         )
         self.screen.blit(info_lifes, info_lives_rect)
 

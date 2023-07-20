@@ -26,7 +26,7 @@ class Spaceship:
         self.is_alive = True
         self.has_shield = False
         self.time_up = 0
-        self.lives = 20
+        self.lives = 25
 
     def update(self, game_speed, user_input, handle_bullet):
         if user_input[pygame.K_LEFT]:
