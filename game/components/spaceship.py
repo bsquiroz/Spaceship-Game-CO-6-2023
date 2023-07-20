@@ -4,6 +4,7 @@ from game.utils.constants import (
     SCREEN_WIDTH,
     SCREEN_HEIGHT,
     BULLET_PLAYER_TYPE,
+    BULLET_MISSILE,
     SPACESHIP_SHIELD,
 )
 
@@ -27,7 +28,7 @@ class Spaceship:
         self.is_alive = True
         self.has_shield = False
         self.time_up = 0
-        self.lives = 25
+        self.lives = 5
         self.missiles = 0
 
     def update(self, game_speed, user_input, handle_bullet):
@@ -45,6 +46,11 @@ class Spaceship:
 
         if user_input[pygame.K_SPACE]:
             self.shoot(handle_bullet)
+
+        if user_input[pygame.K_f]:
+            if self.missiles > 0:
+                self.missiles -= 1
+                self.shoot_missile(handle_bullet)
 
         if self.has_shield:
             time_to_show = round((self.time_up - pygame.time.get_ticks()) / 1000, 2)
@@ -75,6 +81,9 @@ class Spaceship:
     def shoot(self, handle_bullet):
         handle_bullet.add_bullet(BULLET_PLAYER_TYPE, self.rect.center)
 
+    def shoot_missile(self, handle_bullet):
+        handle_bullet.add_bullet(BULLET_MISSILE, self.rect.center)
+
     def activate_power_up(self, power_up):
         self.time_up = power_up.time_up
         if type(power_up) == Shield:
@@ -83,7 +92,7 @@ class Spaceship:
             self.has_shield = True
 
         if type(power_up) == Heart:
-            self.lives += 5
+            self.lives += 1
 
         if type(power_up) == Missile:
             self.missiles += 1
@@ -101,6 +110,6 @@ class Spaceship:
         self.rect.y = self.Y_POS
         self.is_alive = True
         self.has_shield = False
-        self.lives = 25
+        self.lives = 5
         self.time_up = 0
         self.missiles = 0

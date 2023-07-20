@@ -9,8 +9,7 @@ class Bullet:
     def update(self, obj):
         if self.rect.colliderect(obj.rect):
             obj.lives -= 1
-
-            print(obj.lives)
+            self.is_alive = False
 
             if obj.lives <= 0:
                 obj.is_alive = False
