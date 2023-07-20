@@ -1,17 +1,18 @@
 import pygame
 
 from game.components.enemies.enemy import Enemy
-from game.utils.constants import ENEMY_2
+from game.utils.constants import ENEMY_BOSS
 
 
-class ShipSmall(Enemy):
-    WIDTH = 30
-    HEIGHT = 40
+class Boss(Enemy):
+    WIDTH = 200
+    HEIGHT = 100
     SPEED_X = 10
-    SPEED_Y = 4
+    SPEED_Y = 0
+    Y_POS = 50
 
     def __init__(self):
-        self.image = ENEMY_2
+        self.image = ENEMY_BOSS
         self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGHT))
-        self.lives = 10
+        self.lives = 50
         super().__init__(self.image)

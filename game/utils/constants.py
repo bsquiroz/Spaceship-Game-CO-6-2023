@@ -31,6 +31,8 @@ BULLET_POWER_UP = pygame.image.load(os.path.join(IMG_DIR, "Bullet/missile.png"))
 
 ENEMY_1 = pygame.image.load(os.path.join(IMG_DIR, "Enemy/enemy_1.png"))
 ENEMY_2 = pygame.image.load(os.path.join(IMG_DIR, "Enemy/enemy_2.png"))
+ENEMY_BOSS = pygame.image.load(os.path.join(IMG_DIR, "Enemy/boss.png"))
+
 ENEMY_ASTEROID = pygame.image.load(os.path.join(IMG_DIR, "Obstacles/meteoro.png"))
 
 FONT_STYLE = "freesansbold.ttf"
