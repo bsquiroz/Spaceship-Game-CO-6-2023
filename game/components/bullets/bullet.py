@@ -8,8 +8,13 @@ class Bullet:
 
     def update(self, obj):
         if self.rect.colliderect(obj.rect):
-            obj.is_alive = False
-            self.is_alive = False
+            obj.lives -= 1
+
+            print(obj.lives)
+
+            if obj.lives <= 0:
+                obj.is_alive = False
+                self.is_alive = False
 
     def draw(self, sreen):
         sreen.blit(self.image, self.rect)

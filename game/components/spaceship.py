@@ -8,6 +8,7 @@ from game.utils.constants import (
 )
 
 from game.components.power_ups.shield import Shield
+from game.components.power_ups.heart import Heart
 
 
 class Spaceship:
@@ -25,6 +26,7 @@ class Spaceship:
         self.is_alive = True
         self.has_shield = False
         self.time_up = 0
+        self.lives = 20
 
     def update(self, game_speed, user_input, handle_bullet):
         if user_input[pygame.K_LEFT]:
@@ -78,6 +80,9 @@ class Spaceship:
             self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGHT))
             self.has_shield = True
 
+        if type(power_up) == Heart:
+            self.lives += 5
+
     def deactivate_power_up(self):
         self.image = SPACESHIP
         self.image = pygame.transform.scale(self.image, (self.WIDTH, self.HEIGHT))
@@ -91,3 +96,5 @@ class Spaceship:
         self.rect.y = self.Y_POS
         self.is_alive = True
         self.has_shield = False
+        self.lives = 25
+        self.time_up = 0

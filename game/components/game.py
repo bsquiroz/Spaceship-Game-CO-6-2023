@@ -8,6 +8,7 @@ from game.utils.constants import (
     TITLE,
     FPS,
     COLORS,
+    HEART_RED,
 )
 
 from game.components.spaceship import Spaceship
@@ -88,6 +89,7 @@ class Game:
             self.power_up_handler.draw(self.screen)
             self.draw_score()
             self.draw_light_years()
+            self.draw_lifes()
             self.asteroid.draw(self.screen)
         else:
             self.draw_menu()
@@ -157,6 +159,18 @@ class Game:
             f"Distance {self.light_years}", 15, COLORS["WHITE"], 1010, 80
         )
         self.screen.blit(light_years, light_years_rect)
+
+    def draw_lifes(self):
+        self.image = HEART_RED
+        self.image = pygame.transform.scale(self.image, (20, 20))
+        self.rect = self.image.get_rect()
+        self.rect.x = 10
+        self.rect.y = 10
+        self.screen.blit(self.image, self.rect)
+        info_lifes, info_lives_rect = text_utils.get_message(
+            f"x {self.player.lives / 5}", 15, COLORS["WHITE"], 50, 20
+        )
+        self.screen.blit(info_lifes, info_lives_rect)
 
     def history_game(self):
         if self.score > self.score_record:

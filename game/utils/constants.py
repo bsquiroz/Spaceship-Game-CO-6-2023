@@ -16,6 +16,7 @@ SHIELD = pygame.image.load(os.path.join(IMG_DIR, "Other/shield.png"))
 BG = pygame.image.load(os.path.join(IMG_DIR, "Other/Track.png"))
 
 HEART = pygame.image.load(os.path.join(IMG_DIR, "Other/SmallHeart.png"))
+HEART_RED = pygame.image.load(os.path.join(IMG_DIR, "Other/iconHeart.png"))
 
 DEFAULT_TYPE = "default"
 SHIELD_TYPE = "shield"
